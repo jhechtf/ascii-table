@@ -1,0 +1,23 @@
+on:
+  pull_request:
+
+jobs:
+  format:
+    name: Check formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: deno fmt --check
+  test:
+    name: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: deno install -A https://deno.land/x/code_coverage@0.2.0/cli.ts
+      - run: deno task test:ci

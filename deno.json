@@ -1,0 +1,13 @@
+{
+  "fmt": {
+    "options": {
+      "singleQuote": true
+    }
+  },
+  "tasks": {
+    "test:coverage": "deno test --coverage=coverage -A --unstable && deno coverage --lcov coverage --output=lcov.info && code-coverage",
+    "test": "deno test --unstable -A",
+    "test:watch": "deno test --unstable -A --watch",
+    "test:ci": "NO_TTY=true deno test --unstable -A --coverage=coverage && deno coverage --lcov coverage --output=lcov.info"
+  }
+}
